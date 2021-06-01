@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     src_results, src_lnl_t = mapali._lock_n_load(img_src, lnl_config)
     dst_results, dst_lnl_t = mapali._lock_n_load(img_dst, lnl_config)
-
+    print("a")
     ########## arrangement (and pruning)
     arr_config = {'multi_processing':4, 'end_point':False, 'timing':False,
                   'prune_dis_neighborhood': 2,
@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
     src_results['arrangement'], src_arr_t = mapali._construct_arrangement(src_results, arr_config)
     dst_results['arrangement'], dst_arr_t = mapali._construct_arrangement(dst_results, arr_config)
-
+    print("b")
     # time
     interpret_t = src_lnl_t + src_arr_t + dst_lnl_t + dst_arr_t
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
                                                                                       dst_results['arrangement'],
                                                                                       dst_results['image'].shape,
                                                                                       hyp_config)
-
+    print("c")
     ########## pick the winning hypothesis
     sel_config = {'multiprocessing': multiprocessing,
                   'too_many_tforms': 3000,
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     hypothesis, n_cluster, sel_win_t = mapali._select_winning_hypothesis(src_results['arrangement'],
                                                                          dst_results['arrangement'],
                                                                          tforms, sel_config)
-
+    print("d")
     details = {
         'src_lnl_t': src_lnl_t,
         'dst_lnl_t': dst_lnl_t,

@@ -222,8 +222,8 @@ def wHOG (OrientedGradient, NumBin=180*5, Extension=True):
     ori_grad = OrientedGradient
 
     h,w = ori_grad.shape[:2]
-    Ang_arr = np.reshape(np.angle(ori_grad), h*w, 'F')
-    Mag_arr = np.reshape(np.abs(ori_grad), h*w, 'F')
+    Ang_arr = np.reshape(np.angle(ori_grad), h*w, 1)
+    Mag_arr = np.reshape(np.abs(ori_grad), h*w, 1)
 
     hist, bins  = np.histogram(Ang_arr, bins=NumBin, weights=Mag_arr, density=True)
     bincenter = (bins[:-1]+bins[1:])/2
