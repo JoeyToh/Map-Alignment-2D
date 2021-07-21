@@ -590,7 +590,6 @@ def _select_winning_hypothesis(src_arr, dst_arr, tforms, config={}):
             best_idx = np.argmax(arr_match_score)
 
         else:
-            print("b")
             arr_match_score = {}
             for idx, tf in enumerate(tforms):
                 arrange_src = src_arr
